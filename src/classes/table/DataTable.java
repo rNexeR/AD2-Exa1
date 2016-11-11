@@ -3,8 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package classes;
+package classes.table;
 
+import classes.exceptions.DataTableColumnPositionOutOfBoundsException;
+import classes.exceptions.DataTableRowPositionOutOfBoundsException;
+import classes.exceptions.ColumnNameReferenceNotFounException;
 import java.util.ArrayList;
 
 /**
@@ -43,10 +46,17 @@ public class DataTable {
         return diferences;
     }
     
-    public String getColumnsSearchedValues(ArrayList<Integer> searchedPositions, int searchedColumnPosition) {
+    public String getColumnsSearchedValues(ArrayList<Integer> searchedPositions, int searchedColumnPosition) throws DataTableRowPositionOutOfBoundsException, DataTableColumnPositionOutOfBoundsException {
         String columnSearchedValues = "";
-        for(int pos : searchedPositions)
-            columnSearchedValues += data.get(pos)[searchedColumnPosition];
+        for(int pos : searchedPositions){
+            if(pos < data.size()){
+                String dataSearched[] = data.get(pos);
+                if(searchedColumnPosition >= dataSearched.length )
+                    throw new DataTableColumnPositionOutOfBoundsException();
+                columnSearchedValues += data.get(pos)[searchedColumnPosition];
+            }else
+                throw new DataTableRowPositionOutOfBoundsException();
+        }
         columnSearchedValues.trim();
         return columnSearchedValues;
     }

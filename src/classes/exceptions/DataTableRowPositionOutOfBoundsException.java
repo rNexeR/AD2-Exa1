@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package classes;
+package classes.exceptions;
 
 /**
  *
  * @author rnexer
  */
-class ColumnNameReferenceNotFounException extends Exception {
+public class DataTableRowPositionOutOfBoundsException extends Exception {
 
-    public ColumnNameReferenceNotFounException() {
+    public DataTableRowPositionOutOfBoundsException() {
     }
     
 }
