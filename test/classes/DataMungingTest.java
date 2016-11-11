@@ -9,6 +9,7 @@ import classes.readers.TextFileReader;
 import classes.exceptions.DataTableRowPositionOutOfBoundsException;
 import classes.exceptions.DataTableColumnPositionOutOfBoundsException;
 import classes.exceptions.ColumnNameReferenceNotFounException;
+import classes.exceptions.DataTableCellIsNotANumberException;
 import java.io.IOException;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -43,7 +44,7 @@ public class DataMungingTest {
     }
     
     @Test
-    public void getDayWithSmallestTemperatureTest() throws IOException, ColumnNameReferenceNotFounException, DataTableRowPositionOutOfBoundsException, DataTableColumnPositionOutOfBoundsException{
+    public void getDayWithSmallestTemperatureTest() throws IOException, ColumnNameReferenceNotFounException, DataTableRowPositionOutOfBoundsException, DataTableColumnPositionOutOfBoundsException, DataTableCellIsNotANumberException{
         TextFileReader fr = new TextFileReader("weather.dat");
         char ignoredCharacters[] = {'*'};
         
@@ -53,7 +54,7 @@ public class DataMungingTest {
     }
     
     @Test
-    public void getTeamWithSmallestGoalDiferenceTest() throws IOException, ColumnNameReferenceNotFounException, DataTableRowPositionOutOfBoundsException, DataTableColumnPositionOutOfBoundsException{
+    public void getTeamWithSmallestGoalDiferenceTest() throws IOException, ColumnNameReferenceNotFounException, DataTableRowPositionOutOfBoundsException, DataTableColumnPositionOutOfBoundsException, DataTableCellIsNotANumberException{
         TextFileReader fr = new TextFileReader("football.dat");
         char ignoredCharacters[] = {'-'};
         

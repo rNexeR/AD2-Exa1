@@ -5,9 +5,7 @@
  */
 package classes.table;
 
-import classes.exceptions.DataTableColumnPositionOutOfBoundsException;
-import classes.exceptions.DataTableRowPositionOutOfBoundsException;
-import classes.exceptions.ColumnNameReferenceNotFounException;
+import classes.exceptions.*;
 import java.util.ArrayList;
 
 /**
@@ -36,12 +34,16 @@ public class DataTable {
             this.headers.add(header);
     }
     
-    public ArrayList<Integer> createIntegerDiferencesList(int c1ColumnPos, int c2ColumnPos) throws NumberFormatException {
+    public ArrayList<Integer> createIntegerDiferencesList(int c1ColumnPos, int c2ColumnPos) throws DataTableCellIsNotANumberException {
         ArrayList<Integer> diferences = new ArrayList<>();
         for (String[] row : data) {
+            try{
             int c1Value = Integer.parseInt(row[c1ColumnPos]);
             int c2Value = Integer.parseInt(row[c2ColumnPos]);
             diferences.add(c2Value - c1Value);
+            }catch(NumberFormatException Ex){
+                throw new DataTableCellIsNotANumberException();
+            }
         }
         return diferences;
     }

@@ -11,6 +11,7 @@ import classes.table.DataTable;
 import classes.exceptions.DataTableColumnPositionOutOfBoundsException;
 import classes.exceptions.DataTableRowPositionOutOfBoundsException;
 import classes.exceptions.ColumnNameReferenceNotFounException;
+import classes.exceptions.DataTableCellIsNotANumberException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -53,7 +54,7 @@ public class DataMunging {
         return minPositions;
     }
 
-    String getSmallersDifferenceBetweenTwoColumnsWithHeaders(String resultColumnName, String columnName1, String columnName2, boolean hasEnumeration, boolean hasFooter, char[] ignoredCharacters) throws IOException, ColumnNameReferenceNotFounException, DataTableRowPositionOutOfBoundsException, DataTableColumnPositionOutOfBoundsException {
+    String getSmallersDifferenceBetweenTwoColumnsWithHeaders(String resultColumnName, String columnName1, String columnName2, boolean hasEnumeration, boolean hasFooter, char[] ignoredCharacters) throws IOException, ColumnNameReferenceNotFounException, DataTableRowPositionOutOfBoundsException, DataTableColumnPositionOutOfBoundsException, DataTableCellIsNotANumberException {
         ArrayList<String> textLines = this.fileReader.getTextLines();
         
         textLines = removeDecorators(textLines, hasFooter, ignoredCharacters);
